@@ -8,35 +8,42 @@ function verificar(){
     }else{
         var fsex = document.getElementsByName('radsex');
         var idade = ano - Number(fano.value);
-        var genero = '';
-        var img = document.createElement('img'); //criação de tag <img>
-        img.setAttribute('id', 'foto') //criou um img com id foto
+        var genero = ''
+        var img = document.createElement('img') //criação de tag <img>
+        img.setAttribute('id', 'foto') //criação de um id foto no img
         if(fsex[0].checked){ //se o sexo checado for masculinho [0]
             genero = 'Homem';
             if(idade >=0 && idade<10){
                 //criança
-            }else if(idade<21){
+                img.setAttribute('src', 'criancamenino.png')
+            } else if(idade < 21){
                 //jovem
-            } else if(idade<50){
+                img.setAttribute('src', 'jovemhomem.png')
+            } else if(idade <50){
                 //adulto
-            }else{
+                img.setAttribute('src', 'adultohomem.png')
+            } else{
                 //idoso
+                img.setAttribute('src', 'idosohomem.png')
             }
-        }else{
-            if(fsex[1].checked){
-                genero = 'Mulher'
-                if(idade >=0 && idade<10){
-                    //criança
-                }else if(idade<21){
-                    //jovem
-                } else if(idade<50){
-                    //adulto
-                }else{
-                    //idoso
-                }
+        }else if(fsex[1].checked){
+            genero = 'Mulher';
+            if(idade >=0 && idade<10){
+                //criança
+                img.setAttribute('src', 'criancamenina.png')
+            } else if(idade < 21){
+                //jovem
+                img.setAttribute('src', 'jovemmulher.png')
+            } else if(idade <50){
+                //adulto
+                img.setAttribute('src', 'adultomulher.png')
+            } else{
+                //idoso
+                img.setAttribute('src', 'idosomulher.png')
             }
-            res.style.textAlign = 'center';
-            res.innerHTML = `Detectamos ${genero} com ${idade} anos`
         }
+        res.style.textAlign = 'center';
+        res.innerHTML = `Detectamos ${genero} com idade ${idade} anos`
+        res.appendChild(img)//adicionar um filho abaixo
     }
 }
